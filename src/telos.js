@@ -20,7 +20,7 @@ const eosOptions = {
   config: {
     keyProvider: process.env.SERVICE_PRIVATE_KEY,
     httpEndpoint: 'https://testnet.telos.caleos.io:443',
-    chainId: '4667b205c6838ef70ff7988f6e8257e8be0e1284a2f59699054a018f743b1d11',
+    chainId: '6c8aacc339bf1567743eb9c8ab4d933173aa6dca4ae6b6180a849c422f5bb207',
     keyPrefix: 'TLOS'
   }
 }
