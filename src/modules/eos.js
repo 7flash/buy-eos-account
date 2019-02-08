@@ -15,8 +15,8 @@ module.exports = function eos(options) {
   })
 
   function createAccount(args, done) {
-    const { accountName, publicKey } = args
 
+    const { accountName, publicKey } = args
     node.transaction(tx => {
       tx.newaccount({
         creator: serviceAccount,

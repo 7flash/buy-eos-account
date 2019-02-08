@@ -4,9 +4,11 @@ const SenecaWeb = require('seneca-web')
 const Express = require('express')
 const Router = Express.Router
 const context = new Router()
+const cors = require('cors');
 
 const app = Express()
   .use(require('body-parser').json())
+  .use(cors({ origin: '*' }))
   .use(context)
   .listen(process.env.PORT)
 
@@ -19,8 +21,8 @@ const eosOptions = {
   },
   config: {
     keyProvider: process.env.SERVICE_PRIVATE_KEY,
-    httpEndpoint: 'https://testnet.telos.caleos.io:443',
-    chainId: '6c8aacc339bf1567743eb9c8ab4d933173aa6dca4ae6b6180a849c422f5bb207',
+    httpEndpoint: 'https://api-test.telosfoundation.io:443',
+    chainId: 'e17615decaecd202a365f4c029f206eee98511979de8a5756317e2469f2289e3',
     keyPrefix: 'TLOS'
   }
 }
