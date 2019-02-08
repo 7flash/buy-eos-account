@@ -10,7 +10,16 @@ const txMock = {
   delegatebw: chai.spy()
 }
 
-const httpEndpoint = 'https://seven.swap.online/telos-endpoint'
+mock('eosjs', function EOS() {
+  return {
+    transaction: (fn) => {
+      fn(txMock)
+      return Promise.resolve({ transaction_id: '0x123' })
+    }
+  }
+})
+
+const httpEndpoint = 'https://testnet.telos.caleos.io:443'
 const chainId = '6c8aacc339bf1567743eb9c8ab4d933173aa6dca4ae6b6180a849c422f5bb207'
 
 const options = {
@@ -41,7 +50,6 @@ describe('eos microservice', function() {
 
   it('should create an account', (done) => {
     const seneca = init(done)
-
     seneca.act({ role: 'eos', cmd: 'createAccount' }, { accountName, publicKey }, (err, result) => {
       expect(result.transaction_id).to.be.equal('0x123')
       expect(txMock.newaccount).to.have.been.called()
